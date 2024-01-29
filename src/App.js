@@ -1,25 +1,40 @@
-import logo from './logo.svg';
-import './App.css';
+import styled from "styled-components";
+import { MainLayout } from "./styles/Layout";
+import Navigation from "./components/navigation/Navigation";
+import React ,{ useState } from "react";
+import Dashboard from "./components/dashboard/Dashboard";
+import PrivateRoute from "./context/Private";
+
+import { Routes , Route } from "react-router-dom";
+import ForgotPassword from "./components/ForgotPassword";
+import Register from "./components/Register";
+import Login from "./components/Login";
+import Home from "./components/Home";
 
 function App() {
+
+ 
+ 
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <AppStyled className="App">
+      <Routes>
+      <Route path="/login" element={<Login/>} />
+      <Route path="/home" element={<Home/>} />
+      <Route path="/home" element={<PrivateRoute/>} />
+      <Route path="/dashboard" element={<Dashboard />} />
+      <Route path="/forgot-password" element={<ForgotPassword/>} />
+        <Route path="/register" element={<Register/>} />
+      
+      </Routes>
+      
+     
+    </AppStyled>
   );
 }
+
+const AppStyled =styled.div`
+
+
+`
 
 export default App;
